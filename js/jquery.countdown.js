@@ -26,16 +26,36 @@ jQuery.fn.countdown = function(userOptions)
   var createDigits = function(where) 
   {
     var c = 0;
+    var hCounter = 0
+    var mCounter = 0
+    var sCounter = 0
+
+    // Calculate what the format should be:
+    switch (options.startTime.length) {
+        case 12:
+            options.format = "ddd:hh:mm:ss";
+            break;
+        case 11:
+            options.format = "dd:hh:mm:ss";
+            break;
+        case 8:
+            options.format = "hh:mm:ss";
+            break;
+        case 5:
+            options.format = "mm:ss";
+            break;
+    }
+
     // Iterate each startTime digit, if it is not a digit
     // we'll asume that it's a separator
     for (var i = 0; i < options.startTime.length; i++)
     {
-      if (parseInt(options.startTime[i]) >= 0) 
+      if (parseInt(options.startTime[i]) >= 0)
       {
         elem = $('<div id="cnt_' + i + '" class="cntDigit" />').css({
-          height: options.digitHeight * options.digitImages * 10, 
-          float: 'left', background: 'url(\'' + options.image + '\')',
-          width: options.digitWidth});
+            height: options.digitHeight * options.digitImages * 10,
+            "float": 'left', background: 'url(\'' + options.image + '\')',
+            width: options.digitWidth});
         digits.push(elem);
         margin(c, -((parseInt(options.startTime[i]) * options.digitHeight *
                               options.digitImages)));
@@ -45,21 +65,37 @@ jQuery.fn.countdown = function(userOptions)
         // the max. For example second "hours" digit has a conditional max of 4 
         switch (options.format[i]) {
           case 'h':
-            digits[c].__max = (c % 2 == 0) ? 2: 9;
-            if (c % 2 == 0)
-              digits[c].__condmax = 4;
+            if (hCounter < 1) {
+                digits[c].__max = 2;
+                hCounter = 1;
+            } else {
+                digits[c].__condmax = 3;
+            }
             break;
           case 'd': 
             digits[c].__max = 9;
             break;
           case 'm':
+            if (mCounter < 1) {
+                digits[c].__max = 5;
+                mCounter = 1;
+            } else {
+                digits[c].__condmax = 9;
+            }
+            break;
           case 's':
-            digits[c].__max = (c % 2 == 0) ? 5: 9;
+            if (sCounter < 1) {
+                digits[c].__max = 5;
+                sCounter = 1;
+            } else {
+                digits[c].__condmax = 9;
+            }
+            break;
         }
         ++c;
       }
       else 
-        elem = $('<div class="cntSeparator"/>').css({float: 'left'})
+        elem = $('<div class="cntSeparator"/>').css({"float": 'left'})
                 .text(options.startTime[i]);
 
       where.append(elem)
