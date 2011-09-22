@@ -32,6 +32,24 @@ jQuery.fn.countdown = function(userOptions) {
         var mCounter = 0;
         var sCounter = 0;
 
+        // Check the incoming startTime
+        // console.log("options.startTime = " + options.startTime);
+
+        if (typeof options.startTime == 'object') {
+            // console.log("Have been passed a date object? hopefully?");
+            var now = new Date();
+            if (options.startTime.getTime() < now.getTime()) {
+                options.startTime.setYear(options.startTime.getYear() + 1901);
+                // console.log("options.startTime is now = " + options.startTime);
+            }
+            var datediff = Math.ceil((options.startTime.getTime() - now.getTime()) / 1000);
+            var days = Math.floor(datediff / 86400);
+            var hours = Math.floor((datediff % 86400) / 3600);
+            var minutes = Math.floor(((datediff % 86400) % 3600) / 60);
+            var seconds = ((datediff % 86400) % 3600) % 60;
+            options.startTime = days + ":" + hours + ":" + minutes + ":" + seconds;
+        }
+
         // Count the number of ":" in the startTime.
         cCounter = 0;
         for (var i = 0; i < options.startTime.length; i++) {

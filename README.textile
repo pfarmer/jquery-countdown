@@ -2,7 +2,8 @@ This is a fork of http://code.google.com/p/jquery-countdown/ as the original aut
 
 Improvements from the original code base:
 
-* Automatically detect format of startTime
-* Zero pad numbers if needed
+* startTime can be dd:hh:mm:ss or a date object.
+* Automatically detect format of startTime.
+* Zero pad numbers if needed.
 
 
