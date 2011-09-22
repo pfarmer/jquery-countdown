@@ -5,7 +5,7 @@ function do_counter() {
         digitImages: 6,
         digitWidth: 53,
         digitHeight: 77,
-        image: "http://assets.digidayoff.com/images/digits.png"
+        image: "https://github.com/pfarmer/jquery-countdown/raw/master/img/digits.png"
     });
 
     $('#counter2').countdown({
@@ -14,7 +14,7 @@ function do_counter() {
         digitImages: 6,
         digitWidth: 53,
         digitHeight: 77,
-        image: "http://assets.digidayoff.com/images/digits.png"
+        image: "https://github.com/pfarmer/jquery-countdown/raw/master/img/digits.png"
     });
 
     $('#counter3').countdown({
@@ -23,7 +23,7 @@ function do_counter() {
         digitImages: 6,
         digitWidth: 53,
         digitHeight: 77,
-        image: "http://assets.digidayoff.com/images/digits.png"
+        image: "https://github.com/pfarmer/jquery-countdown/raw/master/img/digits.png"
     });
 
     $('#counter4').countdown({
@@ -32,7 +32,7 @@ function do_counter() {
         digitImages: 6,
         digitWidth: 53,
         digitHeight: 77,
-        image: "http://assets.digidayoff.com/images/digits.png"
+        image: "https://github.com/pfarmer/jquery-countdown/raw/master/img/digits.png"
     });
 
     $('#counter5').countdown({
@@ -41,7 +41,7 @@ function do_counter() {
         digitImages: 6,
         digitWidth: 53,
         digitHeight: 77,
-        image: "http://assets.digidayoff.com/images/digits.png"
+        image: "https://github.com/pfarmer/jquery-countdown/raw/master/img/digits.png"
     });
 
     $('#counter6').countdown({
@@ -50,7 +50,7 @@ function do_counter() {
         digitImages: 6,
         digitWidth: 53,
         digitHeight: 77,
-        image: "http://assets.digidayoff.com/images/digits.png"
+        image: "https://github.com/pfarmer/jquery-countdown/raw/master/img/digits.png"
     });
 
     $('#counter7').countdown({
@@ -59,7 +59,7 @@ function do_counter() {
         digitImages: 6,
         digitWidth: 53,
         digitHeight: 77,
-        image: "http://assets.digidayoff.com/images/digits.png"
+        image: "https://github.com/pfarmer/jquery-countdown/raw/master/img/digits.png"
     });
 
     $('#counter7').countdown({
@@ -68,7 +68,7 @@ function do_counter() {
         digitImages: 6,
         digitWidth: 53,
         digitHeight: 77,
-        image: "http://assets.digidayoff.com/images/digits.png"
+        image: "https://github.com/pfarmer/jquery-countdown/raw/master/img/digits.png"
     });
 
 };
