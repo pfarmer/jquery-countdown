@@ -1,1 +1,8 @@
 This is a fork of http://code.google.com/p/jquery-countdown/ as the original author hasn't updated the project since 10th July 2009.
+
+Improvements from the original code base:
+
+* Automatically detect format of startTime
+* Zero pad numbers if needed
+
+
