@@ -6,6 +6,7 @@
         <link type="text/css" rel="stylesheet" href="http://assets.digidayoff.com/sh/styles/shCore.css"/>
         <link type="text/css" rel="stylesheet" href="http://assets.digidayoff.com/sh/styles/shThemeDefault.css"/>
         <script type="text/javascript" src="http://assets.digidayoff.com/sh/scripts/shBrushJScript.js"></script>
+        <script type="text/javascript" src="http://assets.digidayoff.com/sh/scripts/shBrushXml.js"></script>
         <script type="text/javascript">
             SyntaxHighlighter.defaults['toolbar'] = false;
             SyntaxHighlighter.defaults['tab-size'] = 4;
@@ -53,27 +54,40 @@
     </head>
     <body>
         <h1>jQuery Countdown</h1>
+        <h2>General Setup</h2>
+        <pre class="brush: html">
+<head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://raw.github.com/pfarmer/jquery-countdown/master/js/jquery.countdown.js"></script>
+</head>
+        </pre>
+
+
         <h2>4:3:2:1 (4 days, 3 hours, 2 minutes, 1 second)</h2>
         <pre class="brush: js">
-$('#counter1').countdown({
-    startTime: "4:3:2:1",
-    stepTime: 1,
-    image: "images/digits.png"
+$(document).ready(function() {
+    $('#counter1').countdown({
+        startTime: "4:3:2:1",
+        stepTime: 1,
+        image: "images/digits.png"
+    });
 });
         </pre>
         <div id="counter1"></div>
         <h2>April 22 (from Date object)</h2>
         <pre class="brush: js">
-var _date = new Date();
-_date.setMonth(3);
-_date.setDate(22);
-_date.setHours(0);
-_date.setMinutes(0);
-_date.setSeconds(0);
-$('#counter2').countdown({
-    startTime: _date,
-    stepTime: 1,
-    image: "images/digits.png"
+$(document).ready(function() {
+    var _date = new Date();
+    _date.setMonth(3);
+    _date.setDate(22);
+    _date.setHours(0);
+    _date.setMinutes(0);
+    _date.setSeconds(0);
+    $('#counter2').countdown({
+        startTime: _date,
+        stepTime: 1,
+        image: "images/digits.png"
+    });
 });
         </pre>
         <div id="counter2"></div>
