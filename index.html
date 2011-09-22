@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>jQuery Countdown</title>
+        <script type="text/javascript" src="http://assets.digidayoff.com/js/jquery.countdown.min.js"></script>
+        <script type="text/javascript" src="http://assets.digidayoff.com/sh/scripts/shCore.js"></script>
+        <link type="text/css" rel="stylesheet" href="http://assets.digidayoff.com/sh/styles/shCore.css"/>
+        <link type="text/css" rel="stylesheet" href="http://assets.digidayoff.com/sh/styles/shThemeDefault.css"/>
+        <script type="text/javascript" src="http://assets.digidayoff.com/sh/scripts/shBrushJScript.js"></script><script type="text/javascript">
+        <script type="text/javascript">
+            SyntaxHighlighter.defaults['toolbar'] = false;
+            SyntaxHighlighter.defaults['tab-size'] = 4;
+            SyntaxHighlighter.defaults['gutter'] = false;
+            SyntaxHighlighter.all();
+        </script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+        <script type="text/javascript" src="https://raw.github.com/pfarmer/jquery-countdown/master/js/jquery.countdown.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#counter1').countdown({
+                    startTime: "4:3:2:1",
+                    stepTime: 1,
+                    format: 'dd:hh:mm:ss',
+                    digitImages: 6,
+                    digitWidth: 53,
+                    digitHeight: 77,
+                    image: "http://assets.digidayoff.com/images/digits.png"
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h1>jQuery Countdown</h1>
+        <pre class="brush: js">
+$('#counter1').countdown({
+    startTime: "4:3:2:1",
+    stepTime: 1,
+    format: 'dd:hh:mm:ss',
+    digitImages: 6,
+    digitWidth: 53,
+    digitHeight: 77,
+    image: "http://assets.digidayoff.com/images/digits.png"
+});
+        </pre>
+        <div id="counter1"></div>
+    </body>
+</html>
