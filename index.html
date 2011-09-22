@@ -19,13 +19,28 @@
                 $('#counter1').countdown({
                     startTime: "4:3:2:1",
                     stepTime: 1,
-                    format: 'dd:hh:mm:ss',
                     digitImages: 6,
                     digitWidth: 53,
                     digitHeight: 77,
-                    image: "http://assets.digidayoff.com/images/digits.png"
+                    image: "https://github.com/pfarmer/jquery-countdown/raw/master/img/digits.png"
+                });
+
+                var _date = new Date();
+                _date.setMonth(3);
+                _date.setDate(22);
+                _date.setHours(0);
+                _date.setMinutes(0);
+                _date.setSeconds(0);
+                $('#counter10').countdown({
+                    startTime: _date,
+                    stepTime: 1,
+                    digitImages: 6,
+                    digitWidth: 53, 
+                    digitHeight: 77, 
+                    image: "https://github.com/pfarmer/jquery-countdown/raw/master/img/digits.png"
                 });
             });
+
         </script>
         <style type="text/css">
             .cntSeparator {
@@ -40,6 +55,9 @@
                 font-weight: bold;
                 color: #000;
             }
+            pre {
+                background-color: grey;
+            }
         </style>
     </head>
     <body>
@@ -48,13 +66,30 @@
 $('#counter1').countdown({
     startTime: "4:3:2:1",
     stepTime: 1,
-    format: 'dd:hh:mm:ss',
     digitImages: 6,
     digitWidth: 53,
     digitHeight: 77,
-    image: "http://assets.digidayoff.com/images/digits.png"
+    image: "images/digits.png"
 });
         </pre>
         <div id="counter1"></div>
+        <pre class="brush: js">
+var _date = new Date();
+_date.setMonth(3);
+_date.setDate(22);
+_date.setHours(0);
+_date.setMinutes(0);
+_date.setSeconds(0);
+$('#counter10').countdown({
+    startTime: _date,
+    stepTime: 1,
+    digitImages: 6,
+    digitWidth: 53,
+    digitHeight: 77,
+    image: "images/digits.png"
+});
+        </pre>
+        <div id="counter2"></div>
+
     </body>
 </html>
