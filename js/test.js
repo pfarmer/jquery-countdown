@@ -86,4 +86,18 @@ function do_counter() {
         image: "https://github.com/pfarmer/jquery-countdown/raw/master/img/digits.png"
     });
 
+    var _date = new Date();
+    _date.setMonth(1);
+    _date.setDate(22);
+    _date.setHours(13);
+    _date.setMinutes(54);
+    _date.setSeconds(0);
+    $('#counter11').countdown({
+        startTime: _date,
+        stepTime: 1,
+        digitImages: 6,
+        digitWidth: 53,
+        digitHeight: 77,
+        image: "https://github.com/pfarmer/jquery-countdown/raw/master/img/digits.png"
+    });
 };
