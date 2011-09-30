@@ -100,7 +100,7 @@ jQuery.fn.countdown = function(userOptions) {
         // we'll assume that it's a separator
         for (var i = 0; i < options.startTime.length; i++) {
             if (parseInt(options.startTime[i]) >= 0) {
-                var elem = $('<div id="cnt_' + i + '" class="cntDigit" />').css({
+                var elem = jQuery('<div id="cnt_' + i + '" class="cntDigit" />').css({
                     height: options.digitHeight * options.digitImages * 10,
                     "float": 'left', background: 'url(\'' + options.image + '\')',
                     width: options.digitWidth});
@@ -143,10 +143,12 @@ jQuery.fn.countdown = function(userOptions) {
                 ++c;
             }
             else
-                elem = $('<div class="cntSeparator"/>').css({"float": 'left'})
+                elem = jQuery('<div class="cntSeparator"/>').css({"float": 'left'})
                     .text(options.startTime[i]);
 
-            where.append(elem)
+            where.append('<div>');
+            where.append(elem);
+            where.append('</div>');
         }
     };
 
