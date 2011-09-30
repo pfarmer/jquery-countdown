@@ -8,5 +8,4 @@ h2. Improvements from the original code base:
 * Automatically detect format of startTime.
 * Zero pad numbers if needed.
 
-h2. Please add a in the wiki to your site if you use this jQuery plugin.
-
+h2. Please add a link in the wiki to your site if you use this jQuery plugin.
