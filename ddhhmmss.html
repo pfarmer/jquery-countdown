@@ -8,22 +8,22 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $('#counter1').countdown({
-        startTime: "1:1:1",
+        startTime: "1:1:1:1",
         stepTime: 1,
     });
 
     $('#counter2').countdown({
-        startTime: "1:1:99",
+        startTime: "1:1:1:99",
         stepTime: 1,
     });
 
     $('#counter3').countdown({
-        startTime: "1:99:99",
+        startTime: "1:1:99:99",
         stepTime: 1,
     });
 
     $('#counter4').countdown({
-        startTime: "99:99:99",
+        startTime: "1:99:99:99",
         stepTime: 1,
     });
 
@@ -43,12 +43,12 @@ $(document).ready(function() {
         color: #000;
     }
 </style>
-<h1>1:1:1 (01:01:01)</h1>
+<h1>1:1:1:1 (01:01:01:01)</h1>
 <div id="counter1"></div>
-<h1>1:1:99 (01:01:59)</h1>
+<h1>1:1:1:99 (01:01:01:59)</h1>
 <div id="counter2"></div>
-<h1>1:99:99 (01:59:59)</h1>
+<h1>1:1:99:99 (01:01:59:59)</h1>
 <div id="counter3"></div>
-<h1>99:99:99 (23:59:59)</h1>
+<h1>1:99:99:99 (01:23:59:59)</h1>
 <div id="counter4"></div>
 </body>
