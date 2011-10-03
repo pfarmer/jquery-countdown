@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>jquery-countdown</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.countdown.js"></script>
+<script type="text/javascript" src="js/ss.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#counter1').countdown({
+        startTime: "9",
+        stepTime: 1,
+    });
+
+    $('#counter2').countdown({
+        startTime: "99",
+        stepTime: 1,
+    });
+
+    $('#counter3').countdown({
+        startTime: "59",
+        stepTime: 1,
+    });
+
+});
+</script>
+<style type="text/css">
+    .cntSeparator {
+        font-size: 54px;
+        margin: 10px 7px;
+        color: #000;
+    }
+    .desc div {
+        font-family: Arial;
+        width: 70px;
+        font-size: 13px;
+        font-weight: bold;
+        color: #000;
+    }
+</style>
+<h1>9</h1>
+<div id="counter1"></div>
+<h1>99 (should start at 59)</h1>
+<div id="counter2"></div>
+<h1>59</h1>
+<div id="counter3"></div>
+</body>
