@@ -1,5 +1,5 @@
 /*
- * jquery-countdown plugin v0.1
+ * jquery-countdown plugin - v0.2
  *
  * Copyright (c) 2009 Martin Conte Mac Donell <Reflejo@gmail.com>
  * Copyright (c) 2011 Peter Farmer <pfarmer@gmail.com>
@@ -12,8 +12,6 @@ jQuery.fn.countdown = function(userOptions) {
     // Default options
     var options = {
         stepTime: 60,
-        // startTime and format MUST follow the same format.
-        // also you cannot specify a format unordered (e.g. hh:ss:mm is wrong)
         format: "dd:hh:mm:ss",
         startTime: "01:12:32:55",
         digitImages: 6,
@@ -64,11 +62,30 @@ jQuery.fn.countdown = function(userOptions) {
             }
         }
 
-        // Zero each section of the startTime if required.
+        // Zero pad each section of the startTime if required.
         // console.log("options.startTime = " + options.startTime)
         var chunks = options.startTime.split(":");
+        // console.log("chunks.length = " + chunks.length);
         var newstartTime = "";
         for (var i = 0; i < chunks.length; i++) {
+            var max = 59;
+            if (chunks.length == 3) {
+                if (i == 0) {
+                    max = 23;
+                }
+            }
+            if (chunks.length == 4) {
+                if (i == 0) {
+                    max = 9999;
+                }
+                if (i == 1) {
+                    max = 23;
+                }
+            }
+
+            if (chunks[i] > max) {
+                chunks[i] = max;
+            }
             if (chunks[i].length < 2) {
                 chunks[i] = "0" + chunks[i];
             }
@@ -127,6 +144,7 @@ jQuery.fn.countdown = function(userOptions) {
                 switch (options.format[i]) {
                     case 'h':
                         if (hCounter < 1) {
+                            // console.log("digits[c] = " + digits[c]);
                             digits[c].__max = 2;
                             // console.log("settings digits[" + c + "].__max = 2");
                             hCounter = 1;
