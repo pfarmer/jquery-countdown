@@ -1,5 +1,5 @@
 /*
- * jquery-countdown plugin v0.1
+ * jquery-countdown plugin - v0.2
  *
  * Copyright (c) 2009 Martin Conte Mac Donell <Reflejo@gmail.com>
  * Copyright (c) 2011 Peter Farmer <pfarmer@gmail.com>
