@@ -1,5 +1,5 @@
 /*
- * jquery-counter plugin
+ * jquery-countdown plugin v0.1
  *
  * Copyright (c) 2009 Martin Conte Mac Donell <Reflejo@gmail.com>
  * Copyright (c) 2011 Peter Farmer <pfarmer@gmail.com>
@@ -14,7 +14,7 @@ jQuery.fn.countdown = function(userOptions) {
         stepTime: 60,
         // startTime and format MUST follow the same format.
         // also you cannot specify a format unordered (e.g. hh:ss:mm is wrong)
-        // format: "dd:hh:mm:ss",
+        format: "dd:hh:mm:ss",
         startTime: "01:12:32:55",
         digitImages: 6,
         digitWidth: 53,
@@ -39,22 +39,28 @@ jQuery.fn.countdown = function(userOptions) {
             // console.log("Have been passed a date object? hopefully?");
             var now = new Date();
             if (options.startTime.getTime() < now.getTime()) {
-                options.startTime.setYear(options.startTime.getYear() + 1901);
+                options.startTime.setFullYear(options.startTime.getFullYear() + 1);
                 // console.log("options.startTime is now = " + options.startTime);
             }
+            // console.log("options.startTime.getTime() = " + options.startTime.getTime());
+            // console.log("now.getTime() = " + now.getTime());
             var datediff = Math.ceil((options.startTime.getTime() - now.getTime()) / 1000);
+            // console.log("datediff = " + datediff);
             var days = Math.floor(datediff / 86400);
+            // console.log("days = " + days);
             var hours = Math.floor((datediff % 86400) / 3600);
             var minutes = Math.floor(((datediff % 86400) % 3600) / 60);
             var seconds = ((datediff % 86400) % 3600) % 60;
             options.startTime = days + ":" + hours + ":" + minutes + ":" + seconds;
         }
 
+        _startTime = options.startTime.split("");
         // Count the number of ":" in the startTime.
         cCounter = 0;
-        for (var i = 0; i < options.startTime.length; i++) {
-            if (isNaN(parseInt(options.startTime[i]))) {
-                cCounter++;
+        for (var i = 0; i < _startTime.length; i++) {
+            if (isNaN(parseInt(_startTime[i]))) {
+                // console.log("cCounter++ (" + _startTime[i] + ")");
+                cCounter = cCounter + 1;
             }
         }
 
@@ -69,8 +75,7 @@ jQuery.fn.countdown = function(userOptions) {
         }
 
         options.startTime = chunks.join(":");
-//        console.log("options.startTime = " + options.startTime)
-
+        // console.log("options.startTime = " + options.startTime)
 
         // Calculate what the format should be:
         switch (cCounter) {
@@ -98,12 +103,19 @@ jQuery.fn.countdown = function(userOptions) {
 
         // Iterate each startTime digit, if it is not a digit
         // we'll assume that it's a separator
+        options.startTime = options.startTime.split("");
+        options.format = options.format.split("");
+        // console.log("options.startTime = " + options.startTime);
+        // console.log("options.startTime.length = " + options.startTime.length);
         for (var i = 0; i < options.startTime.length; i++) {
+            // console.log("options.startTime[" + i + "] = " + options.startTime[i]);
             if (parseInt(options.startTime[i]) >= 0) {
+                // console.log("parseInt >= 0");
                 var elem = jQuery('<div id="cnt_' + i + '" class="cntDigit" />').css({
                     height: options.digitHeight * options.digitImages * 10,
                     "float": 'left', background: 'url(\'' + options.image + '\')',
                     width: options.digitWidth});
+                // console.log("elem = " + elem);
                 digits.push(elem);
                 margin(c, -((parseInt(options.startTime[i]) * options.digitHeight *
                     options.digitImages)));
@@ -111,13 +123,16 @@ jQuery.fn.countdown = function(userOptions) {
                 // Add max digits, for example, first digit of minutes (mm) has
                 // a max of 5. Conditional max is used when the left digit has reach
                 // the max. For example second "hours" digit has a conditional max of 4
+                // console.log("options.format[" + i + "] = " + options.format[i]);
                 switch (options.format[i]) {
                     case 'h':
                         if (hCounter < 1) {
                             digits[c].__max = 2;
+                            // console.log("settings digits[" + c + "].__max = 2");
                             hCounter = 1;
                         } else {
                             digits[c].__condmax = 3;
+                            // console.log("settings digits[" + c + "].__condmax = 3");
                         }
                         break;
                     case 'd':
@@ -141,11 +156,9 @@ jQuery.fn.countdown = function(userOptions) {
                         break;
                 }
                 ++c;
+            } else {
+                elem = jQuery('<div class="cntSeparator"/>').css({"float": 'left'}).text(options.startTime[i]);
             }
-            else
-                elem = jQuery('<div class="cntSeparator"/>').css({"float": 'left'})
-                    .text(options.startTime[i]);
-
             where.append('<div>');
             where.append(elem);
             where.append('</div>');
@@ -162,6 +175,7 @@ jQuery.fn.countdown = function(userOptions) {
 
     // Makes the movement. This is done by "digitImages" steps.
     var moveStep = function(elem) {
+        // console.log("digits[elem] = " + digits[elem]);
         digits[elem]._digitInitial = -(digits[elem].__max * options.digitHeight * options.digitImages);
         return function _move() {
             mtop = margin(elem) + options.digitHeight;
