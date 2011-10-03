@@ -5,7 +5,7 @@ function do_counter() {
         digitImages: 6,
         digitWidth: 53,
         digitHeight: 77,
-        image: "https://github.com/pfarmer/jquery-countdown/raw/master/img/digits.png"
+        image: "img/digits.png"
     });
 
     $('#counter3').countdown({
@@ -14,7 +14,7 @@ function do_counter() {
         digitImages: 6,
         digitWidth: 53,
         digitHeight: 77,
-        image: "https://github.com/pfarmer/jquery-countdown/raw/master/img/digits.png"
+        image: "img/digits.png"
     });
 
     $('#counter4').countdown({
@@ -23,7 +23,7 @@ function do_counter() {
         digitImages: 6,
         digitWidth: 53,
         digitHeight: 77,
-        image: "https://github.com/pfarmer/jquery-countdown/raw/master/img/digits.png"
+        image: "img/digits.png"
     });
 
     $('#counter5').countdown({
@@ -32,7 +32,7 @@ function do_counter() {
         digitImages: 6,
         digitWidth: 53,
         digitHeight: 77,
-        image: "https://github.com/pfarmer/jquery-countdown/raw/master/img/digits.png"
+        image: "img/digits.png"
     });
 
     $('#counter6').countdown({
@@ -41,7 +41,7 @@ function do_counter() {
         digitImages: 6,
         digitWidth: 53,
         digitHeight: 77,
-        image: "https://github.com/pfarmer/jquery-countdown/raw/master/img/digits.png"
+        image: "img/digits.png"
     });
 
     $('#counter7').countdown({
@@ -50,7 +50,7 @@ function do_counter() {
         digitImages: 6,
         digitWidth: 53,
         digitHeight: 77,
-        image: "https://github.com/pfarmer/jquery-countdown/raw/master/img/digits.png"
+        image: "img/digits.png"
     });
 
     $('#counter8').countdown({
@@ -59,7 +59,7 @@ function do_counter() {
         digitImages: 6,
         digitWidth: 53,
         digitHeight: 77,
-        image: "https://github.com/pfarmer/jquery-countdown/raw/master/img/digits.png"
+        image: "img/digits.png"
     });
 
     $('#counter9').countdown({
@@ -68,7 +68,7 @@ function do_counter() {
         digitImages: 6,
         digitWidth: 53,
         digitHeight: 77,
-        image: "https://github.com/pfarmer/jquery-countdown/raw/master/img/digits.png"
+        image: "img/digits.png"
     });
 
     var _date = new Date();
@@ -83,7 +83,7 @@ function do_counter() {
         digitImages: 6,
         digitWidth: 53,
         digitHeight: 77,
-        image: "https://github.com/pfarmer/jquery-countdown/raw/master/img/digits.png"
+        image: "img/digits.png"
     });
 
     var _date = new Date();
@@ -98,6 +98,6 @@ function do_counter() {
         digitImages: 6,
         digitWidth: 53,
         digitHeight: 77,
-        image: "https://github.com/pfarmer/jquery-countdown/raw/master/img/digits.png"
+        image: "img/digits.png"
     });
 };
