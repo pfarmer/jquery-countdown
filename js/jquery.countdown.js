@@ -33,7 +33,7 @@ jQuery.fn.countdown = function(userOptions) {
         // Check the incoming startTime
         // console.log("options.startTime = " + options.startTime);
 
-        if (typeof options.startTime == 'object') {
+        if ((typeof options.startTime == 'object') && (options.startTime.constructor == Date)) {
             // console.log("Have been passed a date object? hopefully?");
             var now = new Date();
             if (options.startTime.getTime() < now.getTime()) {
