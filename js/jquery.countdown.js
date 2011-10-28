@@ -21,7 +21,7 @@ jQuery.fn.countdown = function(userOptions) {
         },
         image: "digits.png"
     };
-    var digits = [], interval;
+    var digits = [], interval = 0, elem = "";
 
     // Draw digits in given container
     var createDigits = function(where) {
@@ -29,6 +29,7 @@ jQuery.fn.countdown = function(userOptions) {
         var hCounter = 0;
         var mCounter = 0;
         var sCounter = 0;
+        var tempStartTime = [];
 
         // Check the incoming startTime
         // console.log("options.startTime = " + options.startTime);
@@ -63,10 +64,10 @@ jQuery.fn.countdown = function(userOptions) {
         }
 
         // Zero pad each section of the startTime if required.
-        // console.log("options.startTime = " + options.startTime)
+        // console.log("options.startTime = " + options.startTime);
         var chunks = options.startTime.split(":");
         // console.log("chunks.length = " + chunks.length);
-        var newstartTime = "";
+
         for (var i = 0; i < chunks.length; i++) {
             var max = 59;
             if (chunks.length == 3) {
@@ -92,43 +93,62 @@ jQuery.fn.countdown = function(userOptions) {
         }
 
         options.startTime = chunks.join(":");
-        // console.log("options.startTime = " + options.startTime)
+        // console.log("options.startTime = " + options.startTime);
 
         // Calculate what the format should be:
         switch (cCounter) {
             case 3:
                 // console.log("options.startTime.split(':', 1).length is " + options.startTime.split(":")[0].length);
                 if (options.startTime.split(":")[0].length == 3) {
-                    options.format = "ddd:hh:mm:ss";
+                    currentFormat = "ddd:hh:mm:ss";
                 } else {
-                    options.format = "dd:hh:mm:ss";
+                    currentFormat = "dd:hh:mm:ss";
                 }
                 break;
             case 2:
-                options.format = "hh:mm:ss";
+                currentFormat = "hh:mm:ss";
                 break;
             case 1:
-                options.format = "mm:ss";
+                currentFormat = "mm:ss";
                 break;
             case 0:
-                options.format = "ss";
+                currentFormat = "ss";
                 break;
         }
 
         // console.log("cCounter == " + cCounter);
         // console.log("options.format == " + options.format);
-
+        // console.log("currentFormat == " + currentFormat);
+        
         // Iterate each startTime digit, if it is not a digit
         // we'll assume that it's a separator
         options.startTime = options.startTime.split("");
         options.format = options.format.split("");
-        // console.log("options.startTime = " + options.startTime);
+        currentFormat = currentFormat.split("");
+        
+        //console.log("BEFORE OUR MOD options.startTime = " + options.startTime);
+        //console.log("BEFORE OUR MOD options.format = " + options.format);
+        //console.log("BEFORE OUR MOD currentFormat = " + currentFormat);
+        
+        // Make startTime look like format.options!
+        if(options.format.length != currentFormat.length) {
+        	for (var i = options.format.length, j = options.startTime.length; i >= 0; i--, j--) {
+        		tempStartTime[i] = options.startTime[j];
+        	}
+
+        	// console.log("tempStartTime: "+ tempStartTime);
+        	options.startTime = tempStartTime;
+    	}
+
+        // console.log("before html cookup options.startTime = " + options.startTime);
         // console.log("options.startTime.length = " + options.startTime.length);
+        
+        // Cook up the html to hold the numbers
         for (var i = 0; i < options.startTime.length; i++) {
             // console.log("options.startTime[" + i + "] = " + options.startTime[i]);
             if (parseInt(options.startTime[i]) >= 0) {
                 // console.log("parseInt >= 0");
-                var elem = jQuery('<div id="cnt_' + i + '" class="cntDigit" />').css({
+                elem = jQuery('<div id="cnt_' + i + '" class="cntDigit" />').css({
                     height: options.digitHeight * options.digitImages * 10,
                     "float": 'left', background: 'url(\'' + options.image + '\')',
                     width: options.digitWidth});
@@ -180,7 +200,7 @@ jQuery.fn.countdown = function(userOptions) {
             where.append('<div>');
             where.append(elem);
             where.append('</div>');
-        }
+        };
     };
 
     // Set or get element margin
@@ -217,7 +237,7 @@ jQuery.fn.countdown = function(userOptions) {
                 setTimeout(_move, options.stepTime);
 
             if (mtop == 0) digits[elem].__ismax = true;
-        }
+        };
     };
 
     $.extend(options, userOptions);
