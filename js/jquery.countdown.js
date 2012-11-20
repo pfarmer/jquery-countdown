@@ -9,11 +9,13 @@
  */
 
 (function( $ ) {
-    var init = function( userOptions ) { 
+    var init = function( userOptions ) {
+        var now = new Date();
         var options = {
             stepTime: 60,
             format: "dd:hh:mm:ss",
             startTime: "01:12:32:55",
+            localTime: now,
             digitImages: 6,
             digitWidth: 53,
             digitHeight: 77,
@@ -33,17 +35,19 @@
 
             // Check the incoming startTime
             // console.log("options.startTime = " + options.startTime);
-
+            if ((typeof options.localTime == 'object') && (options.localTime.constructor == Date)){
+                // console.log("options.localTime is now = " + options.localTime);
+            }
             if ((typeof options.startTime == 'object') && (options.startTime.constructor == Date)) {
                 // console.log("Have been passed a date object? hopefully?");
-                var now = new Date();
-                if (options.startTime.getTime() < now.getTime()) {
+
+                if (options.startTime.getTime() < options.localTime.getTime()) {
                     options.startTime.setFullYear(options.startTime.getFullYear() + 1);
                     // console.log("options.startTime is now = " + options.startTime);
                 }
-                // console.log("options.startTime.getTime() = " + options.startTime.getTime());
-                // console.log("now.getTime() = " + now.getTime());
-                var datediff = Math.ceil((options.startTime.getTime() - now.getTime()) / 1000);
+                //console.log("options.startTime.getTime() = " + options.startTime.getTime());
+                //console.log("now.getTime() = " + now.getTime());
+                var datediff = Math.ceil((options.startTime.getTime() - options.localTime.getTime()) / 1000);
                 // console.log("datediff = " + datediff);
                 var days = Math.floor(datediff / 86400);
                 // console.log("days = " + days);
@@ -254,6 +258,6 @@
             return init.apply( this, arguments );
         } else {
             $.error( 'Method ' +  method + ' does not exist on jQuery.countdown' );
-        }    
+        }
     };
 })( jQuery );
